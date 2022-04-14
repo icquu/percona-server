@@ -864,15 +864,15 @@ static int wake_or_create_thread(thread_group_t *thread_group,
     DBUG_RETURN(create_worker(thread_group, admin_connection));
   }
 
-  const ulonglong now = my_microsecond_getsystime();
-  const ulonglong time_since_last_thread_created =
-      (now - thread_group->last_thread_creation_time);
+//   const ulonglong now = my_microsecond_getsystime();
+//   const ulonglong time_since_last_thread_created =
+//       (now - thread_group->last_thread_creation_time);
 
   /* Throttle thread creation. */
-  if (time_since_last_thread_created >
-      microsecond_throttling_interval(*thread_group)) {
+//   if (time_since_last_thread_created >
+//       microsecond_throttling_interval(*thread_group)) {
     DBUG_RETURN(create_worker(thread_group));
-  }
+//   }
 
   DBUG_RETURN(-1);
 }
